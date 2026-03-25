@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Midnight Werewolf</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="card" id="joinCard">
+        <h1>Midnight Werewolf</h1>
+        <p class="muted">Create or join a lobby from your phone.</p>
+        <label>Your name <input id="nameInput" maxlength="24" placeholder="Player name" /></label>
+        <div class="joinRow">
+          <button id="createBtn">Create Lobby</button>
+        </div>
+        <div class="joinRow">
+          <input id="codeInput" maxlength="5" placeholder="Lobby code" />
+          <button id="joinBtn">Join</button>
+        </div>
+        <p id="errorMsg" class="error"></p>
+      </section>
+
+      <section class="card hidden" id="gameCard">
+        <div class="topRow">
+          <h2>Lobby <span id="lobbyCode">-----</span></h2>
+          <span id="meTag" class="tag">Player</span>
+        </div>
+        <div class="grid">
+          <div>
+            <h3>Players</h3>
+            <ul id="playersList"></ul>
+          </div>
+          <div>
+            <h3>My role</h3>
+            <p id="myRole" class="role">Hidden</p>
+          </div>
+        </div>
+
+        <div id="adminPanel" class="admin hidden">
+          <h3>Admin controls</h3>
+          <div class="roles">
+            <label><input type="checkbox" value="Werewolf" checked /> Werewolf</label>
+            <label><input type="checkbox" value="Werewolf" checked /> Werewolf (2nd)</label>
+            <label><input type="checkbox" value="Seer" checked /> Seer</label>
+            <label><input type="checkbox" value="Robber" /> Robber</label>
+            <label><input type="checkbox" value="Troublemaker" /> Troublemaker</label>
+            <label><input type="checkbox" value="Insomniac" /> Insomniac</label>
+            <label><input type="checkbox" value="Villager" checked /> Villager</label>
+            <label><input type="checkbox" value="Villager" /> Villager (2nd)</label>
+            <label><input type="checkbox" value="Villager" /> Villager (3rd)</label>
+          </div>
+          <div class="actions">
+            <button id="saveRolesBtn">Save Roles</button>
+            <button id="startBtn">Start Game</button>
+            <button id="nextBtn">Next Step</button>
+            <button id="resetBtn" class="danger">Reset</button>
+          </div>
+        </div>
+
+        <div class="phase">
+          <h3 id="phaseTitle">Waiting...</h3>
+          <p id="phaseMessage">The admin will start the game.</p>
+          <p id="errorMsgGame" class="error"></p>
+          <p id="phaseTimer" class="timer"></p>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
