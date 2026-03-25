@@ -8,6 +8,7 @@
   </head>
   <body>
     <main class="wrap">
+      <!-- Join screen -->
       <section class="card" id="joinCard">
         <h1>Midnight Werewolf</h1>
         <p class="muted">Create or join a lobby from your phone.</p>
@@ -22,22 +23,65 @@
         <p id="errorMsg" class="error"></p>
       </section>
 
+      <!-- Game screen -->
       <section class="card hidden" id="gameCard">
         <div class="topRow">
           <h2>Lobby <span id="lobbyCode">-----</span></h2>
           <span id="meTag" class="tag">Player</span>
         </div>
-        <div class="grid">
-          <div>
-            <h3>Players</h3>
-            <ul id="playersList"></ul>
-          </div>
-          <div>
-            <h3>My role</h3>
-            <p id="myRole" class="role">Hidden</p>
+
+        <!-- Poker-table circle: players around the edge, center cards in the middle -->
+        <div id="tableArea">
+          <div id="playerCircle"></div>
+          <div id="centerCards">
+            <div class="center-card" data-key="center_0">
+              <img src="/static/images/card-back.svg" alt="Center 1" />
+              <span>C1</span>
+            </div>
+            <div class="center-card" data-key="center_1">
+              <img src="/static/images/card-back.svg" alt="Center 2" />
+              <span>C2</span>
+            </div>
+            <div class="center-card" data-key="center_2">
+              <img src="/static/images/card-back.svg" alt="Center 3" />
+              <span>C3</span>
+            </div>
           </div>
         </div>
 
+        <!-- My role card (flip reveal) -->
+        <div class="my-role-section">
+          <h3>My Role</h3>
+          <div id="myRoleCard" class="role-card face-down">
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="/static/images/card-back.svg" alt="Hidden" />
+              </div>
+              <div class="card-back">
+                <img id="myRoleImg" src="" alt="" />
+                <span id="myRoleName"></span>
+              </div>
+            </div>
+          </div>
+          <p class="muted tap-hint" id="tapHint">Tap to reveal</p>
+        </div>
+
+        <!-- Night action panel (shown when it's your turn to act) -->
+        <div id="nightActionPanel" class="hidden night-panel">
+          <p id="actionInstruction" class="action-instruction"></p>
+          <button id="confirmActionBtn" class="hidden">Confirm Action</button>
+          <p id="actionResult" class="action-result"></p>
+        </div>
+
+        <!-- Phase info -->
+        <div class="phase">
+          <h3 id="phaseTitle">Waiting...</h3>
+          <p id="phaseMessage">The admin will start the game.</p>
+          <p id="errorMsgGame" class="error"></p>
+          <p id="phaseTimer" class="timer"></p>
+        </div>
+
+        <!-- Admin controls -->
         <div id="adminPanel" class="admin hidden">
           <h3>Admin controls</h3>
           <div class="roles">
@@ -57,13 +101,6 @@
             <button id="nextBtn">Next Step</button>
             <button id="resetBtn" class="danger">Reset</button>
           </div>
-        </div>
-
-        <div class="phase">
-          <h3 id="phaseTitle">Waiting...</h3>
-          <p id="phaseMessage">The admin will start the game.</p>
-          <p id="errorMsgGame" class="error"></p>
-          <p id="phaseTimer" class="timer"></p>
         </div>
       </section>
     </main>

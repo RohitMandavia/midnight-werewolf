@@ -6,7 +6,7 @@ body {
   color: #eef1ff;
 }
 .wrap {
-  max-width: 900px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 16px;
 }
@@ -32,14 +32,17 @@ button {
   border: 0;
   background: #4d73ff;
   color: white;
-  padding: 10px 12px;
+  padding: 10px 14px;
   border-radius: 10px;
   font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
 }
+button:active { opacity: 0.8; }
 button.danger { background: #d33b52; }
-.hidden { display: none; }
+.hidden { display: none !important; }
 .error { color: #ff9aaa; min-height: 1.2em; }
-.topRow { display: flex; justify-content: space-between; align-items: center; }
+.topRow { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .tag {
   background: #2d355f;
   border: 1px solid #3b4679;
@@ -47,17 +50,208 @@ button.danger { background: #d33b52; }
   padding: 6px 10px;
   font-size: 12px;
 }
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+
+/* ─── Poker table circle ─── */
+#tableArea {
+  position: relative;
+  width: 100%;
+  padding-top: 70%;
+  margin: 8px 0 12px;
+  background: #0d1124;
+  border-radius: 50%;
+  border: 2px solid #1e2545;
+  overflow: visible;
 }
-ul { margin: 0; padding-left: 18px; }
-.role {
-  font-size: 22px;
-  font-weight: 800;
+#playerCircle {
+  position: absolute;
+  inset: 0;
+}
+
+/* Player seat */
+.player-seat {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  cursor: default;
+  transition: transform 0.15s;
+  z-index: 2;
+}
+.player-seat .seat-card {
+  width: 52px;
+  height: 78px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid #2c3458;
+  background: #0f1220;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.player-seat .seat-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.player-seat .seat-name {
+  font-size: 10px;
+  margin-top: 3px;
+  color: #b8bfdc;
+  max-width: 64px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.player-seat.is-me .seat-name { color: #80ffba; font-weight: 700; }
+.player-seat.selectable { cursor: pointer; }
+.player-seat.selectable .seat-card { border-color: #4d73ff; }
+.player-seat.selectable:hover { transform: translate(-50%, -50%) scale(1.12); }
+.player-seat.selected .seat-card {
+  border-color: #80ffba;
+  box-shadow: 0 0 10px #80ffba88;
+}
+.player-seat.inactive { opacity: 0.35; pointer-events: none; }
+
+/* Center cards */
+#centerCards {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+}
+.center-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: default;
+  transition: transform 0.15s;
+}
+.center-card img {
+  width: 38px;
+  height: 57px;
+  border-radius: 5px;
+  border: 2px solid #2c3458;
+  display: block;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.center-card span {
+  font-size: 9px;
+  color: #b8bfdc;
+  margin-top: 2px;
+}
+.center-card.selectable { cursor: pointer; }
+.center-card.selectable img { border-color: #4d73ff; }
+.center-card.selectable:hover { transform: scale(1.12); }
+.center-card.selected img {
+  border-color: #80ffba;
+  box-shadow: 0 0 8px #80ffba88;
+}
+
+/* ─── My role flip card ─── */
+.my-role-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8px 0 12px;
+}
+.my-role-section h3 { margin: 0 0 8px; }
+.tap-hint { font-size: 11px; margin: 4px 0 0; }
+
+.role-card {
+  width: 100px;
+  height: 150px;
+  perspective: 800px;
+  cursor: pointer;
+}
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.role-card.revealed .card-inner { transform: rotateY(180deg); }
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #2c3458;
+}
+.card-front img,
+.card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background: #0f1220;
+}
+.card-back img { position: absolute; inset: 0; }
+#myRoleName {
+  position: relative;
+  z-index: 1;
+  font-size: 10px;
+  font-weight: 700;
+  color: #eef1ff;
+  background: #00000088;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+/* ─── Night action panel ─── */
+.night-panel {
+  background: #11162c;
+  border: 1px solid #4d73ff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.action-instruction {
+  font-size: 14px;
+  color: #aabbff;
+  margin: 0 0 10px;
+}
+#confirmActionBtn {
+  background: #00c97a;
+  color: #000;
+  font-weight: 700;
+  padding: 10px 20px;
+  font-size: 15px;
+}
+.action-result {
+  font-size: 13px;
   color: #80ffba;
+  margin: 8px 0 0;
+  min-height: 1em;
 }
+
+/* ─── Phase section ─── */
+.phase {
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #11162c;
+  border: 1px solid #2b3560;
+}
+.timer {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffde74;
+}
+
+/* ─── Admin panel ─── */
 .admin {
   margin: 14px 0;
   border: 1px solid #2f3863;
@@ -80,19 +274,7 @@ ul { margin: 0; padding-left: 18px; }
   gap: 8px;
   margin-top: 10px;
 }
-.phase {
-  margin-top: 12px;
-  padding: 12px;
-  border-radius: 12px;
-  background: #11162c;
-  border: 1px solid #2b3560;
-}
-.timer {
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffde74;
-}
-@media (max-width: 700px) {
-  .grid { grid-template-columns: 1fr; }
+
+@media (max-width: 500px) {
   .roles { grid-template-columns: 1fr; }
 }
