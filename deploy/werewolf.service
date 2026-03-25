@@ -1,0 +1,14 @@
+[Unit]
+Description=Midnight Werewolf FastAPI App
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/werewolf
+ExecStart=/home/ubuntu/werewolf/.venv/bin/uvicorn app:app --host 127.0.0.1 --port 8001
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
