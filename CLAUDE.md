@@ -47,4 +47,4 @@ Access at `http://localhost:8001`. Players on the same Wi-Fi join via `http://<l
 
 ## Images
 
-Role card images live in `static/images/{role_lowercase}.png` (e.g. `werewolf.png`). The card back is `static/images/card-back.png`. All are 200×300px. Swap files in place to update art without any code changes.
+Role card images live in `static/images/{role_lowercase}.svg` (e.g. `werewolf.svg`). The card back is `static/images/card-back.svg`. Swap files in place to update art without any code changes — the frontend references them by role name, lowercased.
