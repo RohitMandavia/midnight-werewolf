@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="300" viewBox="0 0 200 300">
+  <rect width="200" height="300" rx="14" fill="#0f1220"/>
+  <rect x="8" y="8" width="184" height="284" rx="10" fill="none" stroke="#2c3458" stroke-width="2"/>
+  <circle cx="100" cy="140" r="50" fill="none" stroke="#3b4679" stroke-width="1.5"/>
+  <text x="100" y="148" text-anchor="middle" font-size="48" fill="#3b4679">🌙</text>
+  <text x="100" y="220" text-anchor="middle" font-size="13" fill="#4d73ff" font-family="system-ui,sans-serif" font-weight="700" letter-spacing="2">MIDNIGHT</text>
+  <text x="100" y="238" text-anchor="middle" font-size="11" fill="#2c3458" font-family="system-ui,sans-serif" letter-spacing="3">WEREWOLF</text>
+</svg>

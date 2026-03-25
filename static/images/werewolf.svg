@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="300" viewBox="0 0 200 300">
+  <rect width="200" height="300" rx="14" fill="#1a0a0a"/>
+  <rect x="8" y="8" width="184" height="284" rx="10" fill="none" stroke="#5a1a1a" stroke-width="2"/>
+  <rect x="0" y="0" width="200" height="300" rx="14" fill="url(#ww-grad)" opacity="0.3"/>
+  <defs><linearGradient id="ww-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b0000"/><stop offset="1" stop-color="#1a0a0a"/></linearGradient></defs>
+  <text x="100" y="145" text-anchor="middle" font-size="72" fill="#cc2200">🐺</text>
+  <text x="100" y="200" text-anchor="middle" font-size="18" fill="#ff6666" font-family="system-ui,sans-serif" font-weight="800" letter-spacing="1">WEREWOLF</text>
+  <text x="100" y="222" text-anchor="middle" font-size="10" fill="#993333" font-family="system-ui,sans-serif">Wake up. Find each other.</text>
+  <line x1="40" y1="260" x2="160" y2="260" stroke="#5a1a1a" stroke-width="1"/>
+  <text x="100" y="278" text-anchor="middle" font-size="9" fill="#5a1a1a" font-family="system-ui,sans-serif" letter-spacing="2">TEAM WEREWOLF</text>
+</svg>

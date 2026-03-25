@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="300" viewBox="0 0 200 300">
+  <rect width="200" height="300" rx="14" fill="#0a140a"/>
+  <rect x="8" y="8" width="184" height="284" rx="10" fill="none" stroke="#1a4a1a" stroke-width="2"/>
+  <defs><linearGradient id="vil-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a3a0a"/><stop offset="1" stop-color="#0a140a"/></linearGradient></defs>
+  <rect x="0" y="0" width="200" height="300" rx="14" fill="url(#vil-grad)" opacity="0.4"/>
+  <text x="100" y="145" text-anchor="middle" font-size="72" fill="#66bb66">🧑‍🌾</text>
+  <text x="100" y="200" text-anchor="middle" font-size="22" fill="#80ffba" font-family="system-ui,sans-serif" font-weight="800" letter-spacing="1">VILLAGER</text>
+  <text x="100" y="222" text-anchor="middle" font-size="10" fill="#338833" font-family="system-ui,sans-serif">No night action. Find the werewolf.</text>
+  <line x1="40" y1="260" x2="160" y2="260" stroke="#1a4a1a" stroke-width="1"/>
+  <text x="100" y="278" text-anchor="middle" font-size="9" fill="#1a4a1a" font-family="system-ui,sans-serif" letter-spacing="2">TEAM VILLAGE</text>
+</svg>
